@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MistrzowieWynajmu.Models.Database;
@@ -25,8 +26,11 @@ namespace MistrzowieWynajmu
         {
             services.AddMvc();
 
-            var dbConnectionString = @"Server=(localdb)\mssqllocaldb;Database=MistrzowieDB;Trusted_Connection=True;";
-            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(dbConnectionString));
+            //var dbConnectionString = @"Server=(localdb)\mssqllocaldb;Database=MistrzowieDB;Trusted_Connection=True;";
+            //services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(dbConnectionString));
+
+            var dbConnectionString = @"server=localhost;port=3306;database=company;uid=rdwwojcik;password=radek";
+            services.AddDbContext<DatabaseContext>(options => options.UseMySql(dbConnectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

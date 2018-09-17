@@ -26,6 +26,6 @@ namespace MistrzowieWynajmu.Models
     public enum PropertyType
     {
         House = 0,
-        Flat = 1;
+        Flat = 1
     }
 }
